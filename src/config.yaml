@@ -1,0 +1,33 @@
+# AutoGluon Predictor constructor arguments
+# - see https://github.com/awslabs/autogluon/blob/ef3a5312dc2eaa0c6afde042d671860ac42cbafb/tabular/src/autogluon/tabular/predictor/predictor.py#L51-L159
+ag_predictor_args:
+#  eval_metric: roc_auc
+  label: AdoptionSpeed
+
+
+# AutoGluon Predictor.fit arguments
+# - see https://github.com/awslabs/autogluon/blob/ef3a5312dc2eaa0c6afde042d671860ac42cbafb/tabular/src/autogluon/tabular/predictor/predictor.py#L280-L651
+ag_fit_args:
+  time_limit: 60
+
+
+image_col: Images
+output_prediction_format: parquet  # predictions output format: csv or parquet
+feature_importance: true       # calculate and save feature importance if true
+leaderboard: true              # save leaderboard output if true
+
+
+settings:
+  region: us-west-2
+  train_path: file://input
+  test_path: file://input
+  model_path: file://model
+  output_path: file://output
+  base_job_name: sagemaker-autogluon-multimodal
+  instance_type: local
+  default_bucket: s3://
+  role: arn:aws:iam::111111111111:role/service-role/AmazonSageMaker-ExecutionRole-20200101T000001
+
+
+
+
